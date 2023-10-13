@@ -1,0 +1,19 @@
+services:
+  astra:
+    image: husarion/orbbec-camera:humble
+    devices:
+      - /dev/bus/usb/
+    volumes:
+      - ./astra_params.yaml:/ros2_ws/install/astra_camera/share/astra_camera/params/astra_mini_params.yaml
+    command: ros2 launch orbbec_camera $CAMERA_LAUNCH
+
+  rviz:
+    image: husarion/rviz2:humble
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ./default.rviz:/root/.rviz2/default.rviz
+    environment:
+      - DISPLAY
+      - LIBGL_ALWAYS_SOFTWARE=1
+
+
