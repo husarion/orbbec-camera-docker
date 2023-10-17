@@ -9,13 +9,21 @@ The repository contains a GitHub Actions workflow for auto-deployment of built D
 ## Available images
 
 - **`husarion/orbbec-camera:humble`**,
-- **`husarion/orbbec-camera:iron`**.
 
 ## Prepare environment
 
 1. **Plugin the camera**
 
 For best performance please use **USB 2.0/3.0** port, depend of the camera model. Then use `lsusb` command to check if the device is visible.
+
+## Demo
+
+1. **Clone repository**
+
+```bash
+git clone https://github.com/husarion/orbbec-camera-docker.git
+cd orbbec-camera-docker/demo
+```
 
 2. **Select the appropriate launch file**
 
@@ -43,16 +51,7 @@ Replace `<camera_launch>` with appropriate launch file for your camera from belo
 | Gemini E          | 3460                 | gemini_e.launch.py      |
 | Gemini E Lite     | 3606                 | gemini_e_lite.launch.py |
 
-## Demo
-
-1. **Clone repository**
-
-```bash
-git clone https://github.com/husarion/orbbec-camera-docker.git
-cd orbbec-camera-docker/demo
-```
-
-2. **Run `compose.yaml`**
+3. **Run `compose.yaml`**
 
 ```bash
 xhost local:root
