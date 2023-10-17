@@ -12,7 +12,7 @@ The repository contains a GitHub Actions workflow for auto-deployment of built D
 
 ## Prepare environment
 
-1. **Plugin the camera**
+**Plugin the camera**
 
 For best performance please use **USB 2.0/3.0** port, depend of the camera model. Then use `lsusb` command to check if the device is visible.
 
