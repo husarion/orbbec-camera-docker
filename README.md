@@ -2,30 +2,27 @@
 Docker Images for Orbbec cameras
 </h1>
 
-The repository contains a GitHub Actions workflow for auto-deployment of built Docker images to [husarion/orbbec-camera](https://hub.docker.com/r/husarion/orbbec-camera) DockerHub repositories.
+The repository includes a GitHub Actions workflow that automatically deploys built Docker images to the  [husarion/orbbec-camera](https://hub.docker.com/r/husarion/orbbec-camera) Docker Hub repositories. This process is based on [OrbbecSDK_ROS2](https://github.com/orbbec/OrbbecSDK_ROS2) repository.
 
 [![ROS Docker Image](https://github.com/husarion/orbbec-camera-docker/actions/workflows/ros-docker-image.yaml/badge.svg)](https://github.com/husarion/orbbec-camera-docker/actions/workflows/ros-docker-image.yaml)
 
-## Available images
 
-- **`husarion/orbbec-camera:humble`**,
+## Prepare Environment
 
-## Prepare environment
-
-**Plugin the camera**
+**1. Plugin the Device**
 
 For best performance please use **USB 2.0/3.0** port, depend of the camera model. Then use `lsusb` command to check if the device is visible.
 
 ## Demo
 
-1. **Clone repository**
+**1. Clone the repository**
 
 ```bash
 git clone https://github.com/husarion/orbbec-camera-docker.git
 cd orbbec-camera-docker/demo
 ```
 
-2. **Select the appropriate launch file**
+**2. Select the appropriate launch file**
 
 ```bash
 export CAMERA_LAUNCH=<camera_launch>
@@ -51,9 +48,18 @@ Replace `<camera_launch>` with appropriate launch file for your camera from belo
 | Gemini E          | 3460                 | gemini_e.launch.py      |
 | Gemini E Lite     | 3606                 | gemini_e_lite.launch.py |
 
-3. **Run `compose.yaml`**
+**3. Activate the Device**
+
+```bash
+docker compose up orbbec-camera
+```
+
+**4. Launch Visualization**
 
 ```bash
 xhost local:root
-docker compose up
+docker compose up rviz
 ```
+
+> [!NOTE]
+> You can run the visualization on any device, provided that it is connected to the computer to which the sensor is connected.
