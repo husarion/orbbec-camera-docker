@@ -45,7 +45,7 @@ RUN source /opt/ros/$ROS_DISTRO/setup.bash && \
 # Git action version
 RUN echo $(cat /ros2_ws/src/OrbbecSDK_ROS2/orbbec_camera/package.xml | grep '<version>' | sed -r 's/.*<version>([0-9]+.[0-9]+.[0-9]+)<\/version>/\1/g') >> /version.txt
 
-HEALTHCHECK --interval=10s --timeout=5s --start-period=5s --retries=5 \
+HEALTHCHECK --interval=15s --timeout=10s --start-period=5s --retries=5 \
     CMD ["/ros_entrypoint.sh", "ros2", "run", "healthcheck_pkg", "healthcheck_node"]
 
 # Without this line Astra doesn't stop the camera on container shutdown. Default is SIGTERM.
