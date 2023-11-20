@@ -45,7 +45,9 @@ RUN source /opt/ros/$ROS_DISTRO/setup.bash && \
 # Git action version
 RUN echo $(cat /ros2_ws/src/OrbbecSDK_ROS2/orbbec_camera/package.xml | grep '<version>' | sed -r 's/.*<version>([0-9]+.[0-9]+.[0-9]+)<\/version>/\1/g') >> /version.txt
 
-COPY ./ros_entrypoint.sh /
+RUN sed -i '/test -f "\/ros2_ws\/install\/setup.bash" && source "\/ros2_ws\/install\/setup.bash"/a \
+        ros2 run healthcheck_pkg healthcheck_node &' \
+        /ros_entrypoint.sh
 
 COPY ./healthcheck.sh /
 HEALTHCHECK --interval=7s --timeout=2s  --start-period=5s --retries=5 \
