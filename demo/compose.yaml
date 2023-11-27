@@ -1,5 +1,5 @@
 services:
-  astra:
+  orbbec-camera:
     image: husarion/orbbec-camera:humble
     devices:
       - /dev/bus/usb/
