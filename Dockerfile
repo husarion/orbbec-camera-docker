@@ -39,7 +39,7 @@ COPY ./healthcheck.cpp /ros2_ws/src/healthcheck_pkg/src/
 
 # Build
 RUN source /opt/ros/$ROS_DISTRO/setup.bash && \
-    colcon build --event-handlers  console_direct+  --cmake-args  -DCMAKE_BUILD_TYPE=Release
+    colcon build --cmake-args  -DCMAKE_BUILD_TYPE=Release
 
 # Git action version
 RUN echo $(cat /ros2_ws/src/OrbbecSDK_ROS2/orbbec_camera/package.xml | grep '<version>' | sed -r 's/.*<version>([0-9]+.[0-9]+.[0-9]+)<\/version>/\1/g') >> /version.txt
