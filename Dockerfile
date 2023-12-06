@@ -55,7 +55,7 @@ RUN if [ -f "/ros_entrypoint.sh" ]; then \
     fi
 
 COPY ./healthcheck.sh /
-HEALTHCHECK --interval=7s --timeout=2s  --start-period=5s --retries=5 \
+HEALTHCHECK --interval=5s --timeout=2s  --start-period=5s --retries=4 \
     CMD ["/healthcheck.sh"]
 
 # Without this line Astra doesn't stop the camera on container shutdown. Default is SIGTERM.

@@ -1,14 +1,18 @@
 services:
   orbbec-camera:
-    image: husarion/orbbec-camera:humble
-    devices:
-      - /dev/bus/usb/
+    image: husarion/orbbec-camera:humble-nightly
+    network_mode: host
+    ipc: host
     volumes:
+      - /dev:/dev
       - ./astra_params.yaml:/ros2_ws/install/astra_camera/share/astra_camera/params/astra_mini_params.yaml
-    command: ros2 launch orbbec_camera $CAMERA_LAUNCH
+    privileged: true # /dev:/dev + privilege provides the ability to connect the device at runtime
+    command: ros2 launch orbbec_camera $CAMERA_LAUNCH enable_colored_point_cloud:=True
 
   rviz:
     image: husarion/rviz2:humble
+    network_mode: host
+    ipc: host
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - ./default.rviz:/root/.rviz2/default.rviz
